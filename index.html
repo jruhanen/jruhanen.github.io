@@ -25,9 +25,9 @@
       <span>Game Report</span>
     </div>
 
-    <div class="icon" ondblclick="openWindow('coming-soon-window')">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M10 4h20l10 10v30H10z' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M30 4v10h10' fill='%23c0c0c0' stroke='%23000' stroke-width='2'/%3E%3Cline x1='16' y1='22' x2='34' y2='22' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='28' x2='34' y2='28' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='34' x2='28' y2='34' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E" alt="Resume">
-      <span>Resume.pdf</span>
+    <div class="icon" ondblclick="openAppWindow('jumpball-window', 'jumpball.docx', 'https://jruhanen.substack.com/p/the-value-of-the-jump-ball-in-overtime')">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M10 4h20l10 10v30H10z' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M30 4v10h10' fill='%23c0c0c0' stroke='%23000' stroke-width='2'/%3E%3Cline x1='16' y1='22' x2='34' y2='22' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='28' x2='34' y2='28' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='34' x2='28' y2='34' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E" alt="Jump Ball">
+      <span>jumpball.docx</span>
     </div>
 
     <div class="icon" ondblclick="openWindow('contact-window')">
@@ -55,23 +55,6 @@
     </div>
     <div class="window-body app-window-body">
       <iframe id="app-iframe" src="" frameborder="0"></iframe>
-    </div>
-  </div>
-
-  <!-- Coming Soon Dialog -->
-  <div id="coming-soon-window" class="window hidden">
-    <div class="title-bar" onmousedown="startDrag(event, 'coming-soon-window')">
-      <span class="title-bar-text">Resume.pdf</span>
-      <div class="title-bar-controls">
-        <button onclick="closeWindow('coming-soon-window')">X</button>
-      </div>
-    </div>
-    <div class="window-body" style="text-align: center; padding: 20px;">
-      <div style="display: flex; align-items: flex-start; gap: 12px; text-align: left; margin-bottom: 16px;">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23000080' stroke='%23000' stroke-width='1'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-size='20' font-weight='bold'%3Ei%3C/text%3E%3C/svg%3E" style="width: 32px; height: 32px; flex-shrink: 0;">
-        <span style="font-size: 12px; color: #000;">This file is not available yet.<br><br>Coming Soon.</span>
-      </div>
-      <button class="win-btn" onclick="closeWindow('coming-soon-window')" style="min-width: 90px;">OK</button>
     </div>
   </div>
 
@@ -129,8 +112,8 @@
       <div class="start-item" onclick="openAppWindow('game-report-window', 'Game Report', 'game_report_duke_ttu.html'); toggleStart();">
         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='6' y='4' width='36' height='40' rx='2' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3Crect x='12' y='28' width='6' height='10' fill='%232166ac'/%3E%3Crect x='21' y='22' width='6' height='16' fill='%23b2182b'/%3E%3Crect x='30' y='25' width='6' height='13' fill='%232166ac'/%3E%3Cline x1='12' y1='10' x2='36' y2='10' stroke='%23000' stroke-width='1'/%3E%3Cline x1='12' y1='15' x2='30' y2='15' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E" alt=""> Game Report
       </div>
-      <div class="start-item" onclick="openWindow('coming-soon-window'); toggleStart();">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M10 4h20l10 10v30H10z' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M30 4v10h10' fill='%23c0c0c0' stroke='%23000' stroke-width='2'/%3E%3Cline x1='16' y1='22' x2='34' y2='22' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='28' x2='34' y2='28' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='34' x2='28' y2='34' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E" alt=""> Resume
+      <div class="start-item" onclick="openAppWindow('jumpball-window', 'jumpball.docx', 'https://jruhanen.substack.com/p/the-value-of-the-jump-ball-in-overtime'); toggleStart();">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M10 4h20l10 10v30H10z' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M30 4v10h10' fill='%23c0c0c0' stroke='%23000' stroke-width='2'/%3E%3Cline x1='16' y1='22' x2='34' y2='22' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='28' x2='34' y2='28' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='34' x2='28' y2='34' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E" alt=""> jumpball.docx
       </div>
       <div class="start-item" onclick="openWindow('contact-window'); toggleStart();">
         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='10' width='40' height='28' rx='2' fill='%23ffe680' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M4 10l20 16 20-16' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E" alt=""> Contact Me

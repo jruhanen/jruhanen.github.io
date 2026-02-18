@@ -1,0 +1,329 @@
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: #008080;
+  font-family: "MS Sans Serif", "Microsoft Sans Serif", Tahoma, Geneva, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+  cursor: default;
+}
+
+/* ===== DESKTOP ICONS ===== */
+.desktop {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: calc(100vh - 40px);
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  padding: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.icon:hover {
+  border: 1px dotted #ffffff;
+}
+
+.icon img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+}
+
+.icon span {
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 11px;
+  text-align: center;
+  text-shadow: 1px 1px 1px #000000;
+  word-wrap: break-word;
+  max-width: 75px;
+}
+
+/* ===== WINDOWS ===== */
+.window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 2px 2px 0px #000000;
+  z-index: 100;
+}
+
+.title-bar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  padding: 3px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+}
+
+.title-bar:active {
+  cursor: grabbing;
+}
+
+.title-bar-text {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 2px;
+}
+
+.title-bar-controls button {
+  width: 18px;
+  height: 16px;
+  font-size: 10px;
+  font-weight: bold;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.title-bar-controls button:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.window-body {
+  padding: 12px;
+}
+
+/* ===== FORM ===== */
+.field {
+  margin-bottom: 10px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 3px;
+  color: #000000;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 12px;
+  padding: 3px 4px;
+  background: #ffffff;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  outline: none;
+  resize: none;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.win-btn {
+  min-width: 75px;
+  padding: 4px 12px;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 12px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+}
+
+.win-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+#form-status {
+  margin-top: 10px;
+  padding: 6px;
+  font-size: 12px;
+  text-align: center;
+}
+
+#form-status.success {
+  color: #006400;
+}
+
+#form-status.error {
+  color: #8b0000;
+}
+
+/* ===== TASKBAR ===== */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  z-index: 200;
+}
+
+.start-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+  height: 32px;
+}
+
+.start-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.start-btn img {
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+}
+
+.taskbar-divider {
+  width: 2px;
+  height: 28px;
+  margin: 0 6px;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #ffffff;
+}
+
+.taskbar-clock {
+  margin-left: auto;
+  padding: 4px 10px;
+  font-size: 12px;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+/* ===== START MENU ===== */
+.start-menu {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  width: 200px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 2px -2px 0px #000000;
+  z-index: 300;
+  display: flex;
+}
+
+.start-sidebar {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background: linear-gradient(0deg, #000080, #1084d0);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 4px;
+  letter-spacing: 1px;
+}
+
+.start-items {
+  flex: 1;
+  padding: 4px 0;
+}
+
+.start-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.start-item:hover {
+  background: #000080;
+  color: #ffffff;
+}
+
+.start-item img {
+  width: 24px;
+  height: 24px;
+  image-rendering: pixelated;
+}
+
+/* ===== APP WINDOW (iframe) ===== */
+.app-window {
+  width: 85vw;
+  height: 80vh;
+  top: 5vh;
+  left: 7.5vw;
+  transform: none;
+  overflow: hidden;
+  min-width: 400px;
+  min-height: 300px;
+}
+
+.app-window.fullscreen {
+  border: none;
+  box-shadow: none;
+}
+
+.app-window.fullscreen .resize-handle {
+  display: none;
+}
+
+.app-window-body {
+  padding: 0;
+  height: calc(100% - 24px);
+}
+
+.app-window-body iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+}
+
+/* ===== RESIZE HANDLES ===== */
+.resize-handle {
+  position: absolute;
+  z-index: 10;
+}
+
+.resize-tl { top: -4px; left: -4px; width: 12px; height: 12px; cursor: nwse-resize; }
+.resize-tr { top: -4px; right: -4px; width: 12px; height: 12px; cursor: nesw-resize; }
+.resize-bl { bottom: -4px; left: -4px; width: 12px; height: 12px; cursor: nesw-resize; }
+.resize-br { bottom: -4px; right: -4px; width: 12px; height: 12px; cursor: nwse-resize; }
+.resize-t  { top: -4px; left: 8px; right: 8px; height: 6px; cursor: ns-resize; }
+.resize-b  { bottom: -4px; left: 8px; right: 8px; height: 6px; cursor: ns-resize; }
+.resize-l  { left: -4px; top: 8px; bottom: 8px; width: 6px; cursor: ew-resize; }
+.resize-r  { right: -4px; top: 8px; bottom: 8px; width: 6px; cursor: ew-resize; }
+
+/* ===== UTILITY ===== */
+.hidden {
+  display: none !important;
+}

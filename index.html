@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jack Ruhanen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Desktop Icons -->
+  <div class="desktop">
+    <div class="icon" ondblclick="openAppWindow('player-db-window', 'Player Database', 'https://advancedgaels25.shinyapps.io/ncaa-scouting-demo/')">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='20' fill='%23e87722' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M4 24h40M24 4v40M8 8c8 8 8 24 0 32M40 8c-8 8-8 24 0 32' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E" alt="Player Database">
+      <span>Player Database</span>
+    </div>
+
+    <div class="icon" ondblclick="openAppWindow('hustle-window', 'Hustle Stats', 'https://advancedgaels25.shinyapps.io/demostatsapp/')">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='8' width='40' height='32' rx='2' fill='%23228b22' stroke='%23000' stroke-width='2'/%3E%3Cline x1='12' y1='16' x2='36' y2='16' stroke='%23fff' stroke-width='1.5'/%3E%3Cline x1='12' y1='22' x2='36' y2='22' stroke='%23fff' stroke-width='1.5'/%3E%3Cline x1='12' y1='28' x2='36' y2='28' stroke='%23fff' stroke-width='1.5'/%3E%3Cline x1='12' y1='34' x2='28' y2='34' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E" alt="Hustle Stats">
+      <span>Hustle Stats</span>
+    </div>
+
+    <div class="icon" ondblclick="openAppWindow('resume-window', 'Resume.pdf', 'resume.pdf')">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M10 4h20l10 10v30H10z' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M30 4v10h10' fill='%23c0c0c0' stroke='%23000' stroke-width='2'/%3E%3Cline x1='16' y1='22' x2='34' y2='22' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='28' x2='34' y2='28' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='34' x2='28' y2='34' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E" alt="Resume">
+      <span>Resume.pdf</span>
+    </div>
+
+    <div class="icon" ondblclick="openWindow('contact-window')">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='10' width='40' height='28' rx='2' fill='%23ffe680' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M4 10l20 16 20-16' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E" alt="Contact">
+      <span>Contact Me</span>
+    </div>
+  </div>
+
+  <!-- App Window (reusable iframe window) -->
+  <div id="app-window" class="window app-window hidden">
+    <div class="resize-handle resize-tl" data-dir="tl"></div>
+    <div class="resize-handle resize-tr" data-dir="tr"></div>
+    <div class="resize-handle resize-bl" data-dir="bl"></div>
+    <div class="resize-handle resize-br" data-dir="br"></div>
+    <div class="resize-handle resize-t" data-dir="t"></div>
+    <div class="resize-handle resize-b" data-dir="b"></div>
+    <div class="resize-handle resize-l" data-dir="l"></div>
+    <div class="resize-handle resize-r" data-dir="r"></div>
+    <div class="title-bar" onmousedown="startDrag(event, 'app-window')">
+      <span class="title-bar-text" id="app-window-title">App</span>
+      <div class="title-bar-controls">
+        <button onclick="toggleFullscreen()">&#9633;</button>
+        <button onclick="closeAppWindow()">X</button>
+      </div>
+    </div>
+    <div class="window-body app-window-body">
+      <iframe id="app-iframe" src="" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <!-- Contact Window -->
+  <div id="contact-window" class="window hidden">
+    <div class="title-bar" onmousedown="startDrag(event, 'contact-window')">
+      <span class="title-bar-text">Contact Me</span>
+      <div class="title-bar-controls">
+        <button onclick="closeWindow('contact-window')">X</button>
+      </div>
+    </div>
+    <div class="window-body">
+      <form id="contact-form" onsubmit="submitForm(event)">
+        <div class="field">
+          <label for="name">Email:</label>
+          <input type="email" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="field">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="button-row">
+          <button type="submit" class="win-btn">Send</button>
+          <button type="button" class="win-btn" onclick="closeWindow('contact-window')">Cancel</button>
+        </div>
+      </form>
+      <div id="form-status" class="hidden"></div>
+    </div>
+  </div>
+
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <button class="start-btn" onclick="toggleStart()">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect width='9' height='9' x='1' y='1' fill='%23f00'/%3E%3Crect width='9' height='9' x='10' y='1' fill='%230f0'/%3E%3Crect width='9' height='9' x='1' y='10' fill='%2300f'/%3E%3Crect width='9' height='9' x='10' y='10' fill='%23ff0'/%3E%3C/svg%3E" alt="">
+      <span>Start</span>
+    </button>
+    <div class="taskbar-divider"></div>
+    <div class="taskbar-clock" id="clock"></div>
+  </div>
+
+  <!-- Start Menu -->
+  <div id="start-menu" class="start-menu hidden">
+    <div class="start-sidebar">Jack Ruhanen</div>
+    <div class="start-items">
+      <div class="start-item" onclick="openAppWindow('player-db-window', 'Player Database', 'https://advancedgaels25.shinyapps.io/ncaa-scouting-demo/'); toggleStart();">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='20' fill='%23e87722' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M4 24h40M24 4v40M8 8c8 8 8 24 0 32M40 8c-8 8-8 24 0 32' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E" alt=""> Player Database
+      </div>
+      <div class="start-item" onclick="openAppWindow('hustle-window', 'Hustle Stats', 'https://advancedgaels25.shinyapps.io/demostatsapp/'); toggleStart();">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='8' width='40' height='32' rx='2' fill='%23228b22' stroke='%23000' stroke-width='2'/%3E%3Cline x1='12' y1='16' x2='36' y2='16' stroke='%23fff' stroke-width='1.5'/%3E%3Cline x1='12' y1='22' x2='36' y2='22' stroke='%23fff' stroke-width='1.5'/%3E%3Cline x1='12' y1='28' x2='36' y2='28' stroke='%23fff' stroke-width='1.5'/%3E%3Cline x1='12' y1='34' x2='28' y2='34' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E" alt=""> Hustle Stats
+      </div>
+      <div class="start-item" onclick="openAppWindow('resume-window', 'Resume.pdf', 'resume.pdf'); toggleStart();">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M10 4h20l10 10v30H10z' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M30 4v10h10' fill='%23c0c0c0' stroke='%23000' stroke-width='2'/%3E%3Cline x1='16' y1='22' x2='34' y2='22' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='28' x2='34' y2='28' stroke='%23000' stroke-width='1'/%3E%3Cline x1='16' y1='34' x2='28' y2='34' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E" alt=""> Resume
+      </div>
+      <div class="start-item" onclick="openWindow('contact-window'); toggleStart();">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='10' width='40' height='28' rx='2' fill='%23ffe680' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M4 10l20 16 20-16' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E" alt=""> Contact Me
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
